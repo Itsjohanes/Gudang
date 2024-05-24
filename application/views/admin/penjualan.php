@@ -95,6 +95,7 @@
                             <th scope="col">Jumlah</th>
                             <th scope="col">Keterangan</th>
                             <th scope="col">Melalui</th>
+                            <th scope="col">Penanggung Jawab</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -128,6 +129,14 @@
                                 <td><?= $j['jumlah']; ?></td>
                                 <td><?= $j['keterangan']; ?></td>
                                 <td><?= $j['melalui']; ?></td>
+                                <td>
+                                        <?php foreach ($user as $t) : ?>
+                                            <?php if ($j['id_user'] == $t['id_user']) : ?>
+                                                <?= $t['nama']; ?>
+                                                <?php break; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </td>
 
                                 <td>
                                     <a href="<?= base_url(); ?>admin/batal_jual/<?= $j['id_penjualan']; ?>" class="btn btn-danger" onclick="return confirm('Batal Jual, yakin?');">

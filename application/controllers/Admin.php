@@ -228,7 +228,7 @@ class Admin extends CI_Controller
     $data['pindahbarang'] = $this->db->get('tb_pindahbarang')->result_array();
     $data['tempat'] = $this->db->get('tb_tempat')->result_array();
     $data['barang'] = $this->db->get('tb_barang')->result_array();
-    
+    $data['user'] = $this->db->get('tb_user')->result_array();
     $this->load->view('admin/header', $data);
     $this->load->view('admin/sidebar');
     $this->load->view('admin/pindah_barang');
@@ -379,6 +379,7 @@ class Admin extends CI_Controller
     $data['title'] = "Data Penjualan Barang";
     $data['penjualan'] = $this->db->get('tb_penjualan')->result_array();
     $data['tempat'] = $this->db->where('id_tempat !=', 6)->get('tb_tempat')->result_array();
+    $data['user'] = $this->db->get('tb_user')->result_array();
     $data['barang'] = $this->db->get('tb_barang')->result_array();
     $this->load->view('admin/header', $data);
     $this->load->view('admin/sidebar');

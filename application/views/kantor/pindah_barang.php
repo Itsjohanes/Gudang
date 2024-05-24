@@ -84,6 +84,7 @@
                                     <th scope="col">Tanggal Pindah</th>
                                     <th scope="col">Jumlah</th>
                                     <th scope="col">Keterangan</th>
+                                    <th scope="col">Penganggung Jawab</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -98,6 +99,7 @@
                                     <th scope="col">Tanggal Pindah</th>
                                     <th scope="col">Jumlah</th>
                                     <th scope="col">Keterangan</th>
+                                    <th scope="col">Penganggung Jawab</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -136,6 +138,14 @@
                                     <td><?= $j['tanggal']; ?></td>
                                     <td><?= $j['jumlah']; ?></td>
                                     <td><?= $j['keterangan']; ?></td>
+                                    <td>
+                                        <?php foreach ($user as $t) : ?>
+                                            <?php if ($j['id_user'] == $t['id_user']) : ?>
+                                                <?= $t['nama']; ?>
+                                                <?php break; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </td>
                                     <td>
                                         <a href="<?= base_url(); ?>gudang/batal_pindah/<?= $j['id_pindah']; ?>" class="btn btn-danger" onclick="return confirm('Batal Pindah, yakin?');">
                                             <i class="fas fa-trash-alt"></i>
