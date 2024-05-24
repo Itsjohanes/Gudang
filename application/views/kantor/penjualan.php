@@ -50,7 +50,12 @@
                     <input type="text" required class="form-control" placeholder="Melalui" id="melalui" name="melalui">
 
                     </div>
+                    <div class="col">
+                    <input type="datetime-local" id="birthdaytime" name="tanggal">
+
+                    </div>
                 </div>
+                
                 <div class="row mt-3">
                     
                     <div class="col">

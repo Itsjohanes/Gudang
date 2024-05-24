@@ -50,6 +50,10 @@
                         <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
                     </div>
                     <div class="col">
+                    <input type="datetime-local" id="birthdaytime" name="tanggal">
+
+                    </div>
+                    <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
                 </div>

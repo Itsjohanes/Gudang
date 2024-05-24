@@ -113,10 +113,12 @@ class Gudang extends CI_Controller
     $id_tempat_asal = $this->session->userdata('id_tempat');
     $id_tempat_tujuan = $this->input->post('id_tempat_tujuan');
     $keterangan = $this->input->post('keterangan');
-    $timestampSaatIni = time();
+    $tanggal = $this->input->post('tanggal');
+    // Mengubah ke objek DateTime
+    $dt_object = DateTime::createFromFormat('Y-m-d\TH:i', $tanggal);
 
-    // Format time stamp ke dalam format datetime SQL
-    $tanggalSQL = date("Y-m-d H:i:s", $timestampSaatIni);
+    // Mengubah format menjadi Y-m-d H:i:s
+    $formatted_time = $dt_object->format('Y-m-d H:i:s');
 
     $data = array(
       'id_barang' => $id_barang,
@@ -124,7 +126,7 @@ class Gudang extends CI_Controller
       'id_tempat_asal' => $id_tempat_asal,
       'id_tempat_tujuan' => $id_tempat_tujuan,
       'keterangan' => $keterangan,
-      'tanggal' => $tanggalSQL,
+      'tanggal' => $formatted_time,
       'id_user' => $this->session->userdata('id_user')
     );
     $this->db->insert('tb_pindahbarang', $data);
@@ -254,10 +256,12 @@ class Gudang extends CI_Controller
     $pembeli = $this->input->post('pembeli');
     $keterangan = $this->input->post('keterangan');
     $melalui = $this->input->post('melalui');
-    $timestampSaatIni = time();
+    $tanggal = $this->input->post('tanggal');
+    // Mengubah ke objek DateTime
+    $dt_object = DateTime::createFromFormat('Y-m-d\TH:i', $tanggal);
 
-    // Format time stamp ke dalam format datetime SQL
-    $tanggalSQL = date("Y-m-d H:i:s", $timestampSaatIni);
+    // Mengubah format menjadi Y-m-d H:i:s
+    $formatted_time = $dt_object->format('Y-m-d H:i:s');
 
     $data = array(
       'id_barang' => $id_barang,
@@ -266,7 +270,7 @@ class Gudang extends CI_Controller
       'pembeli' => $pembeli,
       'keterangan' => $keterangan,
       'melalui' => $melalui,
-      'tanggal' => $tanggalSQL,
+      'tanggal' => $formatted_time,
       'id_user' => $this->session->userdata('id_user')
     );
     $this->db->insert('tb_penjualan', $data);

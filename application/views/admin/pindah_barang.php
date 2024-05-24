@@ -51,13 +51,15 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <div class="col">
+                    <input type="datetime-local" id="birthdaytime" name="tanggal">
+
+                    </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col">
                         <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
                     </div>
-                   
-                    
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
@@ -174,3 +176,22 @@
         <!-- /.container-fluid -->
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- End of Main Content -->
+    <!-- Page level plugins -->
