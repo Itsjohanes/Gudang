@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
     <?php if ($this->session->flashdata('category_success')) { ?>
         <div class="alert alert-success"> <?= $this->session->flashdata('category_success') ?> </div>
     <?php } ?>

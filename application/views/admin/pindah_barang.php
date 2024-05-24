@@ -56,6 +56,8 @@
                     <div class="col">
                         <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
                     </div>
+                   
+                    
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
@@ -172,22 +174,3 @@
         <!-- /.container-fluid -->
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- End of Main Content -->
-    <!-- Page level plugins -->

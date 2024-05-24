@@ -24,7 +24,7 @@ class Kantor extends CI_Controller
   {
     parent::__construct();
     if ($this->session->userdata('role') == "1") {
-      redirect('admin');
+      redirect('kantor');
     }else if ($this->session->userdata('role') == "2") {
       redirect('gudang');
     }else if ($this->session->userdata('role') == "3") {
@@ -227,10 +227,10 @@ class Kantor extends CI_Controller
     $data['user'] = $this->db->get('tb_user')->result_array();
     $data['tempat'] = $this->db->get('tb_tempat')->result_array();
     $data['barang'] = $this->db->get('tb_barang')->result_array();
-    $this->load->view('admin/header', $data);
-    $this->load->view('admin/sidebar');
-    $this->load->view('admin/detail_jumlah_barang');
-    $this->load->view('admin/footer');
+    $this->load->view('kantor/header', $data);
+    $this->load->view('kantor/sidebar');
+    $this->load->view('kantor/detail_jumlah_barang');
+    $this->load->view('kantor/footer');
   }
   
   public function penjualan(){
