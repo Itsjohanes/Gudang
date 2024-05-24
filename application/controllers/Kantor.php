@@ -213,6 +213,25 @@ class Kantor extends CI_Controller
     $this->load->view('kantor/footer');
   
   }
+  public function detail_jumlah_barang($id_jumlah_barang){
+    $data['title'] = "Detail Jumlah Barang";
+    //select semua data dari tb_jumlah_barang berdasarkan id_jumlah_barang
+    $data['jumlahbarang'] = $this->db->get_where('tb_jumlah_barang', ['id_jumlahbarang' => $id_jumlah_barang])->row_array();
+    $data['id_barang'] = $data['jumlahbarang']['id_barang'];
+    $data['id_tempat'] = $data['jumlahbarang']['id_tempat'];
+    //Pindah
+    $data['pindah_dari'] = $this->db->get_where('tb_pindahbarang', ['id_barang' => $data['id_barang'], 'id_tempat_asal' => $data['id_tempat']])->result_array();
+    $data['pindah_ke'] = $this->db->get_where('tb_pindahbarang', ['id_barang' => $data['id_barang'], 'id_tempat_tujuan' => $data['id_tempat']])->result_array();
+    //Penjualan
+    $data['penjualan'] = $this->db->get_where('tb_penjualan', ['id_barang' => $data['id_barang'], 'id_tempat_asal' => $data['id_tempat']])->result_array();
+    $data['user'] = $this->db->get('tb_user')->result_array();
+    $data['tempat'] = $this->db->get('tb_tempat')->result_array();
+    $data['barang'] = $this->db->get('tb_barang')->result_array();
+    $this->load->view('admin/header', $data);
+    $this->load->view('admin/sidebar');
+    $this->load->view('admin/detail_jumlah_barang');
+    $this->load->view('admin/footer');
+  }
   
   public function penjualan(){
     $data['title'] = "Data Penjualan Barang";

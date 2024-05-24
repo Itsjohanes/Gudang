@@ -42,6 +42,7 @@
                                     <th scope="col">Nama Barang</th>
                                     <th scope= "col">Tempat</th>
                                     <th scope= "col">Jumlah</th>
+                                    <th scope= "detail">Detail</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -51,6 +52,7 @@
                                     <th scope="col">Nama Barang</th>
                                     <th scope= "col">Tempat</th>
                                     <th scope= "col">Jumlah</th>
+                                    <th scope= "detail">Detail</th>
 
                                 </tr>
                             </tfoot>
@@ -77,6 +79,9 @@
                                             </td>
                                         <td>
                                             <?php echo $j['jumlah']; ?>
+                                        </td>
+                                        <td>
+                                        <a href="<?= base_url(); ?>gudang/detail_jumlah_barang/<?= $j['id_jumlahbarang']; ?>" class="btn btn-primary" ><i class="fa fa-info-circle"></i></a>
                                         </td>
 
                                     </tr>

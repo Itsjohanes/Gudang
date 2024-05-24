@@ -142,6 +142,7 @@
                                     <a href="<?= base_url(); ?>admin/batal_jual/<?= $j['id_penjualan']; ?>" class="btn btn-danger" onclick="return confirm('Batal Jual, yakin?');">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
+                             
                                 </td>
                             </tr>
                             <?php $i++; ?>

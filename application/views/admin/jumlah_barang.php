@@ -114,6 +114,8 @@
                                         </td>
                                         <td>
                                             <a href="<?= base_url(); ?>admin/delete_jumlah_barang/<?= $j['id_jumlahbarang']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus barang ini secara permanen?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>admin/detail_jumlah_barang/<?= $j['id_jumlahbarang']; ?>" class="btn btn-primary" ><i class="fa fa-info-circle"></i></a>
+
                                         </td>
                                     </tr>
 

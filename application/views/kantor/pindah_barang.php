@@ -150,6 +150,7 @@
                                         <a href="<?= base_url(); ?>gudang/batal_pindah/<?= $j['id_pindah']; ?>" class="btn btn-danger" onclick="return confirm('Batal Pindah, yakin?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
+                                        
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
