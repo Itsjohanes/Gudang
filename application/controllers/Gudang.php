@@ -204,7 +204,7 @@ class Gudang extends CI_Controller
   public function jumlah_barang(){
     $data['title'] = "Data Jumlah Barang";
     $data['barang'] = $this->db->get('tb_barang')->result_array();
-    $data['jumlahbarang'] = $this->db->get_where('tb_jumlah_barang',['id_tempat' => $this->session->userdata('id_tempat')])->result_array();
+    $data['jumlahbarang'] = $this->db->get('tb_jumlah_barang')->result_array();
     $data['tempat'] = $this->db->get('tb_tempat')->result_array();
     $this->load->view('gudang/header', $data);
     $this->load->view('gudang/sidebar');
@@ -215,7 +215,7 @@ class Gudang extends CI_Controller
   
   public function penjualan(){
     $data['title'] = "Data Penjualan Barang";
-    $data['penjualan'] = $this->db->get('tb_penjualan')->result_array();
+    $data['penjualan'] = $this->db->get_where('tb_penjualan',['id_tempat_asal' => $this->session->userdata('id_tempat')])->result_array();
     $data['tempat'] = $this->db->where('id_tempat !=', 6)->get('tb_tempat')->result_array();
     $data['barang'] = $this->db->get('tb_barang')->result_array();
     $this->load->view('gudang/header', $data);
@@ -228,7 +228,7 @@ class Gudang extends CI_Controller
     $penjualan = $this->db->get('tb_penjualan')->result_array();
     $id_barang = $this->input->post('id_barang');
     $jumlah = $this->input->post('jumlah');
-    $id_tempat_asal = $this->input->post('id_tempat_asal');
+    $id_tempat_asal = $this->session->userdata('id_tempat');
     $pembeli = $this->input->post('pembeli');
     $keterangan = $this->input->post('keterangan');
     $melalui = $this->input->post('melalui');

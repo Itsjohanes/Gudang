@@ -20,7 +20,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tambah Data Penjualan Barang</h6>
                 </div>
-                <?php echo form_open_multipart('admin/tambah_penjualan'); ?>
+                <?php echo form_open_multipart('gudang/tambah_penjualan'); ?>
                 <div class="row">
                     <div class="col">
                         <select class="form-control" id="id_barang" name="id_barang">
@@ -35,14 +35,7 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col">
-                        <select class="form-control" id="id_tempat_asal" name="id_tempat_asal">
-                            <option value="">Asal</option>
-                            <?php foreach ($tempat as $b) : ?>
-                                <option value="<?= $b['id_tempat']; ?>"><?= $b['nama']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    
                     <div class="col">
                     <input type="text" required class="form-control" placeholder="Pembeli" id="pembeli" name="pembeli">
 
@@ -130,7 +123,7 @@
                                 <td><?= $j['melalui']; ?></td>
 
                                 <td>
-                                    <a href="<?= base_url(); ?>admin/batal_jual/<?= $j['id_penjualan']; ?>" class="btn btn-danger" onclick="return confirm('Batal Jual, yakin?');">
+                                    <a href="<?= base_url(); ?>gudang/batal_jual/<?= $j['id_penjualan']; ?>" class="btn btn-danger" onclick="return confirm('Batal Jual, yakin?');">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>

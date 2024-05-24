@@ -137,7 +137,7 @@
                                     <td><?= $j['jumlah']; ?></td>
                                     <td><?= $j['keterangan']; ?></td>
                                     <td>
-                                        <a href="<?= base_url(); ?>admin/batal_pindah/<?= $j['id_pindah']; ?>" class="btn btn-danger" onclick="return confirm('Batal Pindah, yakin?');">
+                                        <a href="<?= base_url(); ?>gudang/batal_pindah/<?= $j['id_pindah']; ?>" class="btn btn-danger" onclick="return confirm('Batal Pindah, yakin?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
