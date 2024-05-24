@@ -74,7 +74,9 @@ class Auth extends CI_Controller
           redirect('admin');
         }else if ($data['role'] == 2) {
           redirect('gudang');
-        }
+        }else if($data['role'] == 3){
+          redirect('kantor');
+        } 
       } else {
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong password!</div>');
