@@ -36,7 +36,6 @@ class Admin extends CI_Controller
   }
   public function index()
   {
-    
       $data['title'] = "Dashboard";
       $data['tanggal'] = date('Y-m-d');
       //Mendapatkan jumlah akun gudang

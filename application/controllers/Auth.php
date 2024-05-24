@@ -23,33 +23,29 @@ class Auth extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    if ($this->session->userdata('role') == "1") {
-      redirect('admin');
-    }else if ($this->session->userdata('role') == "2") {
-      redirect('gudang');
-    }else if ($this->session->userdata('role') == "3") {
-      redirect('kantor');
-    }else{
-      redirect('auth');
-    }
-      
   }
 
   public function index()
   {
+    //load view
     $data['title'] = 'Login';
-    $this->load->view('auth/header', $data);
-    $this->load->view('auth/login');
-    $this->load->view('auth/footer');
-    
+
+    if ($this->session->userdata('email') == '') {
+      $this->load->view('auth/header', $data);
+      $this->load->view('auth/login');
+      $this->load->view('auth/footer');
+    } else {
+      redirect('Admin');
+    }
   }
   public function logout()
   {
+    //buat logout
     $this->session->unset_userdata('email');
-    $this->session->unset_userdata('role');
-    $this->session->unset_userdata('id_user');
-    $this->session->unset_userdata('id_tempat');
     $this->session->unset_userdata('nama');
+    $this->session->unset_userdata('role');
+    $this->session->unset_userdata('id_tempat');
+    $this->session->unset_userdata('id_user');
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
     redirect('auth');
   }
@@ -58,11 +54,14 @@ class Auth extends CI_Controller
   {
     $email = $this->input->post('email');
     $password = $this->input->post('password');
+    //ubah password menjadi sha256
     $password = hash('sha256', $password);
     $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
     if ($user) {
+      //jika usernya aktif cek password
       if ($password == $user['password']) {
         $data = [
+          //role id 1 adalah admin
           'id_user' => $user['id_user'],
           'email' => $user['email'],
           'nama' => $user['nama'],
