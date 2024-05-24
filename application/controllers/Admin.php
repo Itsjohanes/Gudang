@@ -376,6 +376,79 @@ class Admin extends CI_Controller
   
   
   }
+  public function penjualan(){
+    $data['title'] = "Data Penjualan Barang";
+    $data['penjualan'] = $this->db->get('tb_penjualan')->result_array();
+    $data['tempat'] = $this->db->where('id_tempat !=', 6)->get('tb_tempat')->result_array();
+    $data['barang'] = $this->db->get('tb_barang')->result_array();
+    $this->load->view('admin/header', $data);
+    $this->load->view('admin/sidebar');
+    $this->load->view('admin/penjualan');
+    $this->load->view('admin/footer');
+  
+  }
+  public function tambah_penjualan(){
+    $penjualan = $this->db->get('tb_penjualan')->result_array();
+    $id_barang = $this->input->post('id_barang');
+    $jumlah = $this->input->post('jumlah');
+    $id_tempat_asal = $this->input->post('id_tempat_asal');
+    $pembeli = $this->input->post('pembeli');
+    $keterangan = $this->input->post('keterangan');
+    $melalui = $this->input->post('melalui');
+    $timestampSaatIni = time();
+
+    // Format time stamp ke dalam format datetime SQL
+    $tanggalSQL = date("Y-m-d H:i:s", $timestampSaatIni);
+
+    $data = array(
+      'id_barang' => $id_barang,
+      'jumlah' => $jumlah,
+      'id_tempat_asal' => $id_tempat_asal,
+      'pembeli' => $pembeli,
+      'keterangan' => $keterangan,
+      'melalui' => $melalui,
+      'tanggal' => $tanggalSQL,
+      'id_user' => $this->session->userdata('id_user')
+    );
+    $this->db->insert('tb_penjualan', $data);
+
+      $jumlah_barang = $this->db->get_where('tb_jumlah_barang', ['id_barang' => $id_barang, 'id_tempat' => $id_tempat_asal])->row_array();
+      $jumlah_sekarang = $jumlah_barang['jumlah'];
+      $jumlah_sekarang = $jumlah_sekarang - $jumlah;
+      $data = array(
+        'jumlah' => $jumlah_sekarang
+      );
+      $this->db->where('id_barang', $id_barang);
+      $this->db->where('id_tempat', $id_tempat_asal);
+      $this->db->update('tb_jumlah_barang', $data);
+    
+    $this->session->set_flashdata('category_success', 'Data berhasil ditambahkan');
+    redirect('admin/penjualan');
+  
+
+  }
+  public function batal_jual($id_penjualan){
+    $penjualan = $this->db->get_where('tb_penjualan', ['id_penjualan' => $id_penjualan])->row_array();
+    $id_barang = $penjualan['id_barang'];
+    $jumlah = $penjualan['jumlah'];
+    $id_asal = $penjualan['id_tempat_asal'];
+    
+    $jumlah_barang = $this->db->get_where('tb_jumlah_barang', ['id_barang' => $id_barang, 'id_tempat' => $id_asal])->row_array();
+    $jumlah_sekarang = $jumlah_barang['jumlah'];
+    $jumlah_sekarang = $jumlah_sekarang + $jumlah;
+    $data = array(
+      'jumlah' => $jumlah_sekarang
+    );
+    $this->db->where('id_barang', $id_barang);
+    $this->db->where('id_tempat', $id_asal);
+    $this->db->update('tb_jumlah_barang', $data);
+
+    $this->db->where('id_penjualan', $id_penjualan);
+    $this->db->delete('tb_penjualan');
+    $this->session->set_flashdata('category_success', 'Data berhasil dihapus');
+    redirect('admin/penjualan');
+
+  }
   
 }
 

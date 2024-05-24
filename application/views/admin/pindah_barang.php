@@ -33,6 +33,8 @@
                     <div class="col">
                         <input type="text" required class="form-control" placeholder="Jumlah" id="jumlah" name="jumlah">
                     </div>
+                </div>
+                <div class="row mt-3">
                     <div class="col">
                         <select class="form-control" id="id_tempat_asal" name="id_tempat_asal">
                             <option value="">Asal</option>
@@ -49,15 +51,17 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                </div>
+                <div class="row mt-3">
                     <div class="col">
                         <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
                     </div>
-
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
                 </div>
                 </form>
+
             </div>
         </div>
 

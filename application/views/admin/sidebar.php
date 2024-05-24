@@ -82,38 +82,19 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Data Pindah Barang
                     </a>
-                    <?php
-                    if ($title == 'Cetak Laporan Kepindahan') {
-                        //arahih ke controller admin
-                        echo '<a class="nav-link active" href="' . base_url('admin/laporan_kepindahan') . '">';
-                    } else {
-                        echo '<a class="nav-link" href="' . base_url('admin/laporan_kepindahan') . '">';
-                    }
-                    ?> <div class="sb-nav-link-icon"><i class="fas fa-file-alt"></i></div>
-                    Cetak Laporan Kepindahan
-                    </a>
                     <div class="sb-sidenav-menu-heading">Penjualan Barang</div>
                     <?php
-                    if ($title == 'Data Pindah Barang') {
+                    if ($title == 'Data Penjualan Barang') {
                         //arahih ke controller admin
-                        echo '<a class="nav-link active" href="' . base_url('admin/pindah') . '">';
+                        echo '<a class="nav-link active" href="' . base_url('admin/penjualan') . '">';
                     } else {
-                        echo '<a class="nav-link" href="' . base_url('admin/pindah') . '">';
+                        echo '<a class="nav-link" href="' . base_url('admin/penjualan') . '">';
                     }
                     ?>
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Data Penjualan Barang
                     </a>
-                    <?php
-                    if ($title == 'Cetak Laporan Kepindahan') {
-                        //arahih ke controller admin
-                        echo '<a class="nav-link active" href="' . base_url('admin/laporan_kepindahan') . '">';
-                    } else {
-                        echo '<a class="nav-link" href="' . base_url('admin/laporan_kepindahan') . '">';
-                    }
-                    ?> <div class="sb-nav-link-icon"><i class="fas fa-file-alt"></i></div>
-                    Cetak Surat Penjualan
-                    </a>
+
                    
                     
                 </div>
