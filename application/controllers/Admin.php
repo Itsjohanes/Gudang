@@ -44,7 +44,9 @@ class Admin extends CI_Controller
       //Mendapatkan jumlah akun kantor
       $this->db->where('role', 3);
       $data['kantor'] = $this->db->count_all_results('tb_user');
-
+      $query = $this->db->query("SELECT DATE(tanggal) as date, COUNT(*) as count FROM tb_penjualan GROUP BY DATE(tanggal)");
+      $data['penjualan'] = $query->result_array();
+      
       $this->load->view('admin/header', $data);
       $this->load->view('admin/sidebar');
       $this->load->view('admin/dashboard');
