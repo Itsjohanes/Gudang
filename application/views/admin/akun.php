@@ -17,60 +17,71 @@
     <div class="row no-gutters">
 
         <br>
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Akun</h6>
-                </div>
+        <!-- Button to trigger the modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">
+    Tambah Akun
+</button>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAccountModalLabel">Tambah Akun</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <?php echo form_open_multipart('admin/tambah_akun'); ?>
                 <div class="row">
-                <div class="col-md-6">
-                    <div class="row mb-3">
-                        <div class="col">
-                            <input type="text" required class="form-control" placeholder="Email" id="email" name="email" require>
+                    <div class="col-md-6">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" required class="form-control" placeholder="Email" id="email" name="email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" required class="form-control" placeholder="Nama" id="nama" name="nama">
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <input type="text" required class="form-control" placeholder="Nama" id="nama" name="nama" require>
+                    <div class="col-md-6">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" required class="form-control" placeholder="Password" id="password" name="password">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <select class="form-control" id="role" name="role">
+                                    <option value="2">Gudang</option>
+                                    <option value="3">Kantor</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="row mb-3">
-                        <div class="col">
-                            <input type="text" required class="form-control" placeholder="Password" id="password" name="password" require>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <select class="form-control" id="role" name="role">
-                                <option value="2">Gudang</option>
-                                <option value="3">Kantor</option>
-                            </select>
-                        </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <select class="form-control" id="id_tempat" name="id_tempat">
+                            <?php foreach ($tempat as $t) : ?>
+                                <option value="<?= $t['id_tempat']; ?>"><?= $t['nama']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <select class="form-control" id="id_tempat" name="id_tempat">
-                        <?php foreach ($tempat as $t) : ?>
-                            <option value="<?= $t['id_tempat']; ?>"><?= $t['nama']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </div>
-            </div>
-
                 </form>
             </div>
         </div>
+    </div>
+</div>
 
 
 
@@ -155,7 +166,9 @@
     </div>
 
 
-
+ <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 

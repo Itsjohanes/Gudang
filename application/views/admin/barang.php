@@ -17,24 +17,38 @@
     <div class="row no-gutters">
 
         <br>
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Barang</h6>
+     
+
+        <!-- Modal Structure -->
+        <div class="modal fade" id="addBarangModal" tabindex="-1" role="dialog" aria-labelledby="addBarangModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addBarangModalLabel">Tambah Barang</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php echo form_open_multipart('admin/tambah_barang'); ?>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" required class="form-control" placeholder="Barcode" id="id_barang" name="id_barang">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" required class="form-control" placeholder="Nama" id="nama" name="nama">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-                <?php echo form_open_multipart('admin/tambah_barang'); ?>
-                <div class="row">
-                    <div class="col">
-                        <input type="text" required class="form-control" placeholder="Barcode" id="id_barang" name="id_barang" require>
-                    </div>
-                    <div class="col">
-                        <input type="text" required class="form-control" placeholder="Nama" id="nama" name="nama" require>
-                    </div>
-                    <div class="col">
-                        <Button class="btn btn-success">Submit</Button>
-                    </div>
-                </div>
-                </form>
             </div>
         </div>
 
@@ -48,8 +62,11 @@
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBarangModal" width = "50px">
+                    +        
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -115,3 +132,6 @@
 
     <!-- End of Main Content -->
     <!-- Page level plugins -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
