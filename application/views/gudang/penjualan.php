@@ -35,7 +35,7 @@
                     <select class="selectpicker form-control" data-show-subtext="true" id="id_barang" name="id_barang" data-live-search="true">
                         <option value="">Pilih Barang</option>
                         <?php foreach ($barang as $b) : ?>
-                            <option value="<?= $b['id_barang']; ?>"><?= $b['nama']; ?></option>
+                            <option data-subtext="" value="<?= $b['id_barang']; ?>"><?= $b['id_barang'] . "-" . $b['nama']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
