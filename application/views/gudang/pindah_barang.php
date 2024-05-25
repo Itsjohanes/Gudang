@@ -15,52 +15,60 @@
     <div class="row no-gutters">
 
         <br>
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Data Pindah Barang</h6>
-                </div>
-                <?php echo form_open_multipart('gudang/tambah_pindah'); ?>
-                <div class="row">
-                    <div class="col">
-                        <select class="form-control" id="id_barang" name="id_barang">
-                            <option value="">Pilih Barang</option>
-                            <?php foreach ($barang as $b) : ?>
-                                <option value="<?= $b['id_barang']; ?>"><?= $b['nama']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <input type="text" required class="form-control" placeholder="Jumlah" id="jumlah" name="jumlah">
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    
-                    <div class="col">
-                        <select class="form-control" id="id_tempat_tujuan" name="id_tempat_tujuan">
-                            <option value="">Tujuan</Table></option>
-                            <?php foreach ($tempat as $b) : ?>
-                                <option value="<?= $b['id_tempat']; ?>"><?= $b['nama']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
-                    </div>
-                    <div class="col">
-                    <input type="datetime-local" id="birthdaytime" name="tanggal">
+       <!-- Button to trigger modal -->
 
-                    </div>
-                    <div class="col">
-                        <Button class="btn btn-success">Submit</Button>
-                    </div>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="tambahPindahModal" tabindex="-1" role="dialog" aria-labelledby="tambahPindahModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahPindahModalLabel">Tambah Data Pindah Barang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php echo form_open_multipart('gudang/tambah_pindah'); ?>
+                <div class="form-group">
+                    <label for="id_barang">Pilih Barang</label>
+                    <select class="selectpicker form-control" data-show-subtext="true" id="id_barang" name="id_barang" data-live-search="true">
+                        <option value="">Pilih Barang</option>
+                        <?php foreach ($barang as $b) : ?>
+                            <option data-subtext="" value="<?= $b['id_barang']; ?>"><?= $b['id_barang'] . "-" . $b['nama']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah</label>
+                    <input type="text" required class="form-control" placeholder="Jumlah" id="jumlah" name="jumlah">
+                </div>
+                <div class="form-group">
+                    <label for="id_tempat_tujuan">Tujuan</label>
+                    <select class="form-control" id="id_tempat_tujuan" name="id_tempat_tujuan">
+                        <option value="">Tujuan</option>
+                        <?php foreach ($tempat as $b) : ?>
+                            <option value="<?= $b['id_tempat']; ?>"><?= $b['nama']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <input type="text" required class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan">
+                </div>
+                <div class="form-group">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="datetime-local" class="form-control" id="birthdaytime" name="tanggal">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
                 </form>
-
             </div>
         </div>
+    </div>
+</div>
 
 
 
@@ -72,9 +80,13 @@
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
                     <h6 class="m-0 font-weight-bold text-primary">Data Perpindahan Barang</h6>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahPindahModal" style="width: 50px;">
+                            +
+                        </button>
                 </div>
+                
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="datatablesSimple">
@@ -188,3 +200,8 @@
 
     <!-- End of Main Content -->
     <!-- Page level plugins -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
