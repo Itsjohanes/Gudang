@@ -32,7 +32,7 @@
                 <?php echo form_open_multipart('gudang/tambah_penjualan'); ?>
                 <div class="form-group">
                     <label for="id_barang">Pilih Barang</label>
-                    <select class="form-control" id="id_barang" name="id_barang">
+                    <select class="selectpicker form-control" data-show-subtext="true" id="id_barang" name="id_barang" data-live-search="true">
                         <option value="">Pilih Barang</option>
                         <?php foreach ($barang as $b) : ?>
                             <option value="<?= $b['id_barang']; ?>"><?= $b['nama']; ?></option>
